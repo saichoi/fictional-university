@@ -1,5 +1,6 @@
 <?php 
-    
+    get_header(); 
+
     // Wordpress POST 가져오는 방법
     while(have_posts()) {
         the_post(); ?>
@@ -8,4 +9,5 @@
         <hr>
     <?php }
 
+    get_footer();
 ?>
