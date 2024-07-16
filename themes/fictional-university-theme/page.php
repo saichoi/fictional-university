@@ -15,11 +15,21 @@
             </div>
 
             <div class="container container--narrow page-section">
-                <div class="metabox metabox--position-up metabox--with-home-link">
-                    <p>
-                    <a class="metabox__blog-home-link" href="#"><i class="fa fa-home" aria-hidden="true"></i> Back to About Us</a> <span class="metabox__main">Our History</span>
-                    </p>
-                </div>
+                <?php 
+                    // 부모 페이지가 없는 경우 0으로 평가됨
+                    $theParent = wp_get_post_parent_id(get_the_ID());
+                    if ($theParent) { ?>
+                        <div class="metabox metabox--position-up metabox--with-home-link">
+                            <p>
+                            <a class="metabox__blog-home-link" href="<?php echo get_permalink($theParent) ?>">
+                                <i class="fa fa-home" aria-hidden="true"></i> Back to <?php echo get_the_title($theParent) // ID에 해당하는 게시글의 제목을 가져온다. ?>
+                            </a> 
+                            <span class="metabox__main">
+                                <?php the_title() // 현재 게시글의 제목을 가져옴 ?></span>
+                            </p>
+                        </div>
+                    <?php }
+                ?>
 
                 <!-- <div class="page-links">
                     <h2 class="page-links__title"><a href="#">About Us</a></h2>
