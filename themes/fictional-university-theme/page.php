@@ -51,7 +51,7 @@
                                 wp_list_pages(array(
                                     'title_li' => NULL, // 'Page' 라는 제목을 비표시하고 Page에 해당하는 자식을 가져온다.
                                     'child_of' => $findChildrenOf,
-                                    'sort_culumn' => 'menu_order'
+                                    'sort_culumn' => 'menu_order' // 관리화면의 편집 시에 적용하는 order
                                 ));
                             ?>
                         </ul>
