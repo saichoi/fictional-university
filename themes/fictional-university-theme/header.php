@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- wordpress의 설정에 맞는 언어 태그를 가져온다. -->
+<html <?php language_attributes() ?>>
 <head>
+    <!-- wordpress 설정에 맞는 글자, 숫자 유형을 알려준다.  -->
+    <meta charset="<?php bloginfo('charset') ?>">
+    <!-- PC, SP 등 장치들의 원래 크기를 사용하도록 함. 반응형 css 코드 작성이 필요함. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php wp_head(); ?>
 </head>
-<body>
+<!-- 각 페이지마다 body 태그에 특징적인 class를 부여해서 스타일링을 할 수 있다. -->
+<body <?php body_class() ?>>
     <header class="site-header">
       <div class="container">
         <h1 class="school-logo-text float-left">
