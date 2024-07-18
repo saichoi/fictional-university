@@ -14,9 +14,9 @@ add_action("wp_enqueue_scripts", "university_files");
 
 function university_features () {
     // wordpress에서 nav 메뉴 관리하는 방법
-    register_nav_menu('headerMenuLocation', 'Header Menu Location');
-    register_nav_menu('footerLocationOne', 'Footer Location One'); 
-    register_nav_menu('footerLocationTwo', 'Footer Location Two'); 
+    // register_nav_menu('headerMenuLocation', 'Header Menu Location');
+    // register_nav_menu('footerLocationOne', 'Footer Location One'); 
+    // register_nav_menu('footerLocationTwo', 'Footer Location Two'); 
     
     // 사이트 타이틀 설정
     add_theme_support("title-tag"); 
