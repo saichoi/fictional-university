@@ -5,12 +5,13 @@
 // Event Post Type
 function university_post_types () {
     register_post_type('event', array(
+        'supports'=> array('title', 'editor', 'excerpt'),
         'rewrite' => array(
             'slug' => 'events',
         ),
         'has_archive' => true, // Custom Post Type의 archive 페이지를 사용함. (permalink 업데이트 해야함)
         'public' => true,
-        'show_in_reset'=> true, // REST API에서 접근 가능하게 설정(최신 편집기 사용할 수 있음)
+        'show_in_rest' => true, // REST API에서 접근 가능하게 설정(최신 편집기 사용할 수 있음)
         'labels'=> array(
             'name'=> 'Events',
             'add_new' => 'Add New Event',
