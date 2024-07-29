@@ -23,9 +23,25 @@
         <h2 class="headline headline--small-plus t-center">Upcoming Events</h2>
 
         <?php 
+            $today = date('Ymd');
             $homepageEvents = new WP_Query(array(
-                'posts_per_page'=> 2,
+                'posts_per_page'=> -1, // -1 : 모든 게시글을 가져온다.
                 'post_type'=> 'event',
+                
+                // event를 이벤트 날짜 순서대로 정렬하기
+                'meta_key'=> 'event_date',
+                'orderby' => 'meta_value', 
+                'order' => 'ASC',
+
+                // 이미 날짜가 지나간 이벤트는 표시하지 않기
+                'meta_query' => array(
+                    array(
+                        'key' => 'event_date',
+                        'compare' => '>=',
+                        'value' => $today,
+                        'type' => 'numeric'
+                    )
+                )
             ));
 
             while ($homepageEvents->have_posts()) : $homepageEvents->the_post(); ?>
