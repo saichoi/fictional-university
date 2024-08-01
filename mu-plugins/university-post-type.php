@@ -2,8 +2,8 @@
 // mu-plugins : 테마에 기본적으로 사용해야하는 기능(Custom Post Type)을 플러그인으로 등록할 수 있다.
 // Custom Post Type 신규 등록 시에 관리화면에서 setting > permalink를 업데이트해야 worpdress가 인식할 수 있다.
 
-// Event Post Type
 function university_post_types () {
+    // Event Post Type
     register_post_type('event', array(
         'supports'=> array('title', 'editor', 'excerpt'),
         'rewrite' => array(
@@ -20,6 +20,25 @@ function university_post_types () {
             'singular_name' => 'Event'
         ),
         'menu_icon' => 'dashicons-calendar'
+    ));
+
+    // Program Post Type
+    register_post_type('program', array(
+        'supports'=> array('title', 'editor'),
+        'rewrite' => array(
+            'slug' => 'programs',
+        ),
+        'has_archive' => true,
+        'public' => true,
+        'show_in_rest' => true,
+        'labels'=> array(
+            'name'=> 'Programs',
+            'add_new' => 'Add New Program',
+            'edit_item'=> 'Edit Program',
+            'all_items'=> 'All Programs',
+            'singular_name' => 'Program'
+        ),
+        'menu_icon' => 'dashicons-awards'
     ));
 }
 
