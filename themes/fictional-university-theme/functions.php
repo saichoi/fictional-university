@@ -20,6 +20,13 @@ function university_features () {
     
     // 사이트 타이틀 설정
     add_theme_support("title-tag"); 
+
+    // 썸네일 설정
+    add_theme_support("post-thumbnails");
+
+    // 이미지 사이즈 추가
+    add_image_size("professorLandscape", 400, 260, true);
+    add_image_size("professorPortait", 480, 650, true);
 }
 
 add_action("after_setup_theme", "university_features");
