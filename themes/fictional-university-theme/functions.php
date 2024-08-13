@@ -27,6 +27,7 @@ function university_features () {
     // 이미지 사이즈 추가
     add_image_size("professorLandscape", 400, 260, true);
     add_image_size("professorPortait", 480, 650, true);
+    add_image_size("pageBanner", 1500, 340, true);
 }
 
 add_action("after_setup_theme", "university_features");
