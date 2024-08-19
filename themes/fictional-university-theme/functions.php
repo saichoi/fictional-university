@@ -87,3 +87,10 @@ function university_adjust_queries ($query) {
 
 // pre_get_posts : 게시물을 가져오기 직전에 실행되는 훅 (모든 게시글에 관해 적용됨)
 add_action("pre_get_posts","university_adjust_queries");
+
+function universityMapKey($api) {
+    $api['key'] = "AIzaSyAGUjr25yj4NzGkWo2LYtKVnR-th8ILzSY";
+    return $api;
+}
+
+add_filter("acf/fields/google_map/api", 'universityMapKey');

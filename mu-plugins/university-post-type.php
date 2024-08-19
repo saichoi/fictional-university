@@ -15,7 +15,7 @@ function university_post_types () {
         'labels'=> array(
             'name'=> 'Events',
             'add_new' => 'Add New Event',
-            'edit_item'=> 'Edit Evnet',
+            'edit_item'=> 'Edit Event',
             'all_items'=> 'All Events',
             'singular_name' => 'Event'
         ),
@@ -54,6 +54,25 @@ function university_post_types () {
             'singular_name' => 'Professor'
         ),
         'menu_icon' => 'dashicons-welcome-learn-more'
+    ));
+
+     // Campus Post Type
+     register_post_type('campus', array(
+        'supports'=> array('title', 'editor', 'excerpt'),
+        'rewrite' => array(
+            'slug' => 'campuss',
+        ),
+        'has_archive' => true, // Custom Post Type의 archive 페이지를 사용함. (permalink 업데이트 해야함)
+        'public' => true,
+        'show_in_rest' => true, // REST API에서 접근 가능하게 설정(최신 편집기 사용할 수 있음)
+        'labels'=> array(
+            'name'=> 'Campuses',
+            'add_new' => 'Add New Campus',
+            'edit_item'=> 'Edit Campus',
+            'all_items'=> 'All Campuses',
+            'singular_name' => 'Campues'
+        ),
+        'menu_icon' => 'dashicons-location-alt'
     ));
 }
 
