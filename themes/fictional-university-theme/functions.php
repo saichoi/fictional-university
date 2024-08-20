@@ -32,6 +32,7 @@ function pageBanner($args = NULL) {
 
 // 사이트 스타일 및 js 설정
 function university_files () {
+    wp_enqueue_script("googleMap", "//maps.googleapis.com/maps/api/js?key=AIzaSyAGUjr25yj4NzGkWo2LYtKVnR-th8ILzSY", NULL, "1.0", true);
     wp_enqueue_script("main-university-js", get_theme_file_uri("/build/index.js"), array("jquery"), "1.0", true);
     wp_enqueue_style("custom-google-fonts", '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i'); // fonts
     wp_enqueue_style("font-awesome", '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); // icon
