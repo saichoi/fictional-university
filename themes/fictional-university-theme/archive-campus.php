@@ -1,4 +1,4 @@
-<div?php get_header(); 
+<?php get_header(); 
 pageBanner(array(
     'title' => 'Our Campuses',
     'subtitle' => 'We have serveal conveniently located campuses.'
