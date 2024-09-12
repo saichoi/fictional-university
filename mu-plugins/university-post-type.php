@@ -60,7 +60,7 @@ function university_post_types () {
      register_post_type('campus', array(
         'supports'=> array('title', 'editor', 'excerpt'),
         'rewrite' => array(
-            'slug' => 'campuss',
+            'slug' => 'campuses',
         ),
         'has_archive' => true, // Custom Post Type의 archive 페이지를 사용함. (permalink 업데이트 해야함)
         'public' => true,
