@@ -51,6 +51,8 @@ function university_files () {
     
     wp_localize_script('main-university-js', 'universityData', array(
         'root_url' => get_site_url(),
+        // 권한이 없는 사용자가 게시글을 삭제할 수 없게 만들기 위해 Nonce 사용.
+        'nonce' => wp_create_nonce('wp_rest')
     ));
 }
 
