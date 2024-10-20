@@ -35,7 +35,7 @@ function createLike($data) {
 
         // Like를 클릭한 적이 없는 경우(Like를 각 Professor에 User 1인당 하나씩만 선택할 수 있게 만들기 위함.)
         if ($existQuery->found_posts === 0 AND get_post_type($professor) === 'professor') {
-            wp_insert_post(array(
+            return wp_insert_post(array(
                 'post_type' => 'like',
                 'post_status' => 'publish',
                 'post_title' => 'Our PHT Create Post Test',
@@ -51,6 +51,12 @@ function createLike($data) {
     }
 }
 
-function deleteLike() {
-    return 'Thanks for tring to delete a like';
-}
+function deleteLike($data) {
+    $likeId = sanitize_text_field($data['like']);
+    if (get_current_user_id() == get_post_field('post_author', $likeId) AND get_post_type($likeId) == 'like') {
+      wp_delete_post($likeId, true);
+      return 'Congrats, like deleted.';
+    } else {
+      die("You do not have permission to delete that.");
+    }
+  }
