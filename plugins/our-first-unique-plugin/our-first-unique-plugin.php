@@ -6,6 +6,8 @@
     Version: 1.0
     Author: Choi
     Author URI: http://www.saichoiblog.com/
+    Text Domain: wcpdoamin
+    Domain Path: /languages
 */
 
 class WordCountAndTImePlugin {
@@ -13,6 +15,11 @@ class WordCountAndTImePlugin {
         add_action('admin_menu', array($this, 'adminPage'));
         add_action('admin_init', array($this, 'settings'));
         add_filter('the_content', array($this, 'ifWrap'));
+        add_action('init', array($this, 'languages'));
+    }
+
+    function languages() {
+        load_plugin_textdomain('wcpdoamin', false, dirname(plugin_basename(__FILE__)). '/languages');
     }
 
     function ifWrap($content) {
@@ -36,7 +43,7 @@ class WordCountAndTImePlugin {
         }
 
         if (get_option('wcp_wordcount', '1')) {
-            $html .= 'This post has ' . $wordCount . ' words.<br>';
+            $html .= esc_html__('This post has', 'wcpdoamin') . ' ' . $wordCount . ' '.  esc_html__('words', 'wcpdoamin') . '.<br>';
         }
 
         if (get_option('wcp_charactercount', '1')) {
@@ -113,7 +120,7 @@ class WordCountAndTImePlugin {
     <?php }
 
     function adminPage() {
-        add_options_page('Word Count Settings', 'Word Count', 'manage_options', 'word-count-settings-page', array($this, 'ourHTML'));    
+        add_options_page('Word Count Settings', __('Word Count', 'wcpdoamin'), 'manage_options', 'word-count-settings-page', array($this, 'ourHTML'));    
     }
 
     function ourHTML() { ?>
