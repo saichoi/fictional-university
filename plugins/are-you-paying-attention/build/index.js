@@ -96,14 +96,10 @@ wp.blocks.registerBlockType("ourplugin/are-you-paying-attention", {
   category: "common",
   attributes: {
     skyColor: {
-      type: "string",
-      source: "text",
-      selecoter: ".skyColor"
+      type: "string"
     },
     grassColor: {
-      type: "string",
-      source: "text",
-      selecoter: ".grassColor"
+      type: "string"
     }
   },
   edit: props => {
@@ -131,16 +127,8 @@ wp.blocks.registerBlockType("ourplugin/are-you-paying-attention", {
       })]
     });
   },
-  save: props => {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-      children: ["Today the sky is ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-        className: "skyColor",
-        children: props.attributes.skyColor
-      }), " and the grass is ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-        className: "grassColor",
-        children: props.attributes.grassColor
-      }), "."]
-    });
+  save: () => {
+    return null;
   }
 });
 })();

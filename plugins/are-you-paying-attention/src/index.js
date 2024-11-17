@@ -3,8 +3,8 @@ wp.blocks.registerBlockType("ourplugin/are-you-paying-attention", {
     icon: "smiley",
     category: "common",
     attributes: {
-        skyColor: {type:"string", source: "text", selecoter: ".skyColor"},
-        grassColor: {type:"string", source: "text", selecoter: ".grassColor"}
+        skyColor: {type:"string"},
+        grassColor: {type:"string"}
     },
     edit: (props) => {
         function updateSkyColor(event) {
@@ -22,9 +22,7 @@ wp.blocks.registerBlockType("ourplugin/are-you-paying-attention", {
             </div>
         )
     },
-    save:  (props) => {
-        return (
-            <p>Today the sky is <span className="skyColor">{props.attributes.skyColor}</span> and the grass is <span className="grassColor">{props.attributes.grassColor}</span>.</p>
-        )
-    }
+    save:  () => {
+        return null
+    },
 })
