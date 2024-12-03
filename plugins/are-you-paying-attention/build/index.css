@@ -7,13 +7,13 @@
   border: 1px solid #d6d6d6;
   background-color: #f1f1f1;
 }
-.paying-attention-edit-block .marke-as-collect {
+.paying-attention-edit-block .mark-as-correct {
   color: #ffd700;
   position: relative;
   top: -3px;
   transition: transform 0.3s ease-out;
 }
-.paying-attention-edit-block .marke-as-collect:hover {
+.paying-attention-edit-block .mark-as-correct:hover {
   transform: scale(1.25) rotate(12deg);
 }
 .paying-attention-edit-block .attention-delete {
