@@ -143,6 +143,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const __ = wp.i18n.__;
 wp.blocks.registerBlockType("ourplugin/featured-professor", {
   title: "Professor Callout",
   description: "Include a short description and link to a professor of your choice",
@@ -208,7 +209,7 @@ function EditComponent(props) {
         }),
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
           value: "",
-          children: "Select a professor"
+          children: __("Select a professor", "featured-professor")
         }), allProfs.map(prof => {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
             value: prof.id,
