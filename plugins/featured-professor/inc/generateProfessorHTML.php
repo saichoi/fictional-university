@@ -18,7 +18,7 @@ function generateProfessorHTML($id) {
                 <?php 
                 $relatedPrograms = get_field('related_programs');
                 if ($relatedPrograms) { ?>
-                    <p>Name teaches: 
+                    <p><?php echo wp_strip_all_tags(get_the_title()) ?> teaches:
                         <?php  foreach($relatedPrograms as $key => $progrma) {
                             echo get_the_title($progrma);
                             // 배열의 마지막 항목인지를 확인하여 콤마를 붙일지 안 붙일지를 정한다.
