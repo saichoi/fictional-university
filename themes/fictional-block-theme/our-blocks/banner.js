@@ -34,12 +34,5 @@ function EditComponent() {
 }
 
 function SaveComponent() {
-    return (
-        <div className="page-banner">
-            <div className="page-banner__bg-image" style={{ backgroundImage: `url(${defaultImage})` }}></div>
-            <div className="page-banner__content container t-center c-white">
-                <InnerBlocks.Content />
-            </div>
-        </div>
-    )
+    return <InnerBlocks.Content />
 }
