@@ -1,7 +1,8 @@
 import { InnerBlocks } from "@wordpress/block-editor"
+import { registerBlockType } from "@wordpress/blocks"
 import defaultImage from"../images/library-hero.jpg"
 
-wp.blocks.registerBlockType("ourblocktheme/banner", {
+registerBlockType("ourblocktheme/banner", {
     title: "Banner",
     edit: EditComponent,
     save: SaveComponent
@@ -20,7 +21,7 @@ function EditComponent() {
         <div className="page-banner">
             <div className="page-banner__bg-image" style={{ backgroundImage: `url(${defaultImage})` }}></div>
             <div className="page-banner__content container t-center c-white">
-                <InnerBlocks allowedBlocks={["core/paragraph", "core/heading", "core/list"]} />
+                <InnerBlocks allowedBlocks={["ourblocktheme/genericheading"]} />
             </div>
         </div>
     )
