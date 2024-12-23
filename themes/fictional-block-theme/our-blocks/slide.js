@@ -10,6 +10,7 @@ registerBlockType("ourblocktheme/slide", {
         align: ["full"],
     },
     attributes: {
+        themeimage: {type: "string"},
         align: {type: "string", default: "full"},
         imgID: {type: "number"},
         imgURL: {type: "string", default: window.banner.fallbackimage}
@@ -20,13 +21,18 @@ registerBlockType("ourblocktheme/slide", {
 
 function EditComponent(props) {
     useEffect(() => {
+        if (props.attributes.themeimage) {
+            props.setAttributes({imgURL: `${slide.themeimagepath}${props.attributes.themeimage}`})
+        }
+    }, []);
+    useEffect(() => {
         if (props.attributes.imgID) {
             async function go() {
                 const response = await apiFetch({
                     path: `/wp/v2/media/${props.attributes.imgID}`,
                     method: "GET"
                 });
-                props.setAttributes({ imgURL: response.media_details.sizes.pageBanner.source_url })
+                props.setAttributes({ themeimage: "", imgURL: response.media_details.sizes.pageBanner.source_url })
             }
             go()
         }
