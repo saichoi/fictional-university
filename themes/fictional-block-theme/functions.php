@@ -267,3 +267,19 @@ new JSXBlock('genericheading');
 new JSXBlock('genericbutton');
 new JSXBlock('slideshow', true);
 new JSXBlock('slide', true, ['themeimagepath' => get_theme_file_uri('/images/')]);
+
+function myallowedblocks($allowed_block_types, $editor_context) {
+    if ($editor_context->post->post_type == "professor") {
+        // 포스트 타입별로 사용할 수 있는 블록을 제한할 수 있음
+    }
+
+    // if you are on a page/post editor screen
+    if (!empty($editor_context->post)) {
+        return $allowed_block_types;
+    }
+    // if you are on the FSE(Full Side Editor) screen
+    return array('ourblocktheme/banner', 'ourblocktheme/footer');
+}
+
+// Editor에서 Block 제한
+add_filter('allowed_block_types_all', 'myallowedblocks',10, 2);
