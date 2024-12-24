@@ -185,55 +185,29 @@ function makeNotePrivate($data, $postarr) {
     return $data;
 }
 
-class PlaceholderBlock {
-    function __construct($name, $renderCallback = null, $data = null) {
-        $this->name = $name;
-        add_action('init', [$this, 'onInit']);
-    }
-
-    function ourRenderCallback($attributes, $content) {
-        // $content : block 안에 포함된 다른 block에 접근할 수 있음
-        ob_start();
-        require get_theme_file_path("/our-blocks/{$this->name}.php");
-        return ob_get_clean();
-    }
-
-    function onInit() {
-        wp_register_script($this->name, get_stylesheet_directory_uri() . "/our-blocks/{$this->name}.js", array('wp-blocks', 'wp-editor', 'wp-element', 'wp-components', 'wp-block-editor'));
-        
-        register_block_type("ourblocktheme/{$this->name}", array(
-            'editor_script' => $this->name,
-            'render_callback' => [$this, 'ourRenderCallback'] 
-        ));
-    }
-}
-
 // Resgister our new Blocks
 function our_new_blocks() {
     register_block_type_from_metadata(__DIR__ . '/build/footer');
+    register_block_type_from_metadata(__DIR__ . '/build/header');
+    register_block_type_from_metadata(__DIR__ . '/build/eventsandblogs');
+    register_block_type_from_metadata(__DIR__ . '/build/singlepost');
+    register_block_type_from_metadata(__DIR__ . '/build/page');
+    register_block_type_from_metadata(__DIR__ . '/build/blogindex');
+    register_block_type_from_metadata(__DIR__ . '/build/programarchive');
+    register_block_type_from_metadata(__DIR__ . '/build/singleprogram');
+    register_block_type_from_metadata(__DIR__ . '/build/singleprofessor');
+    register_block_type_from_metadata(__DIR__ . '/build/mynotes');
+    register_block_type_from_metadata(__DIR__ . '/build/archivecampus');
+    register_block_type_from_metadata(__DIR__ . '/build/archiveevent');
+    register_block_type_from_metadata(__DIR__ . '/build/archive');
+    register_block_type_from_metadata(__DIR__ . '/build/pastevents');
+    register_block_type_from_metadata(__DIR__ . '/build/singlecampus');
+    register_block_type_from_metadata(__DIR__ . '/build/singleevent');
+    register_block_type_from_metadata(__DIR__ . '/build/search');
+    register_block_type_from_metadata(__DIR__ . '/build/searchresults');
 }
 
 add_action('init', 'our_new_blocks');
-
-new PlaceholderBlock("eventsandblogs");
-new PlaceholderBlock("header");
-// new PlaceholderBlock("footer");
-new PlaceholderBlock("singlepost");
-new PlaceholderBlock("page");
-new PlaceholderBlock("blogindex");
-new PlaceholderBlock("programarchive");
-new PlaceholderBlock("singleprogram");
-new PlaceholderBlock("singleprofessor");
-new PlaceholderBlock("mynotes");
-
-new PlaceholderBlock("archivecampus");
-new PlaceholderBlock("archiveevent");
-new PlaceholderBlock("archive");
-new PlaceholderBlock("pastevents");
-new PlaceholderBlock("search");
-new PlaceholderBlock("searchresults");
-new PlaceholderBlock("singlecampus");
-new PlaceholderBlock("singleevent");
 
 class JSXBlock {
     function __construct($name, $renderCallback = null, $data = null) {

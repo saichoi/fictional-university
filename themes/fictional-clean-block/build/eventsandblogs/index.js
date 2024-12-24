@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/footer/edit.js":
-/*!****************************!*\
-  !*** ./src/footer/edit.js ***!
-  \****************************/
+/***/ "./src/eventsandblogs/edit.js":
+/*!************************************!*\
+  !*** ./src/eventsandblogs/edit.js ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -26,7 +26,7 @@ function Edit() {
       ...blockProps
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "our-placeholder-block"
-    }, "University Footer Placeholder"))
+    }, "University Events and Blogs Placeholder"))
   );
 }
 
@@ -62,13 +62,13 @@ module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
-/***/ "./src/footer/block.json":
-/*!*******************************!*\
-  !*** ./src/footer/block.json ***!
-  \*******************************/
+/***/ "./src/eventsandblogs/block.json":
+/*!***************************************!*\
+  !*** ./src/eventsandblogs/block.json ***!
+  \***************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$scheme":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"ourblocktheme/footer","title":"Fictional University footer","editorScript":"file:./index.js","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$scheme":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"ourblocktheme/eventsandblogs","title":"Fictional University Events and Blogs","editorScript":"file:./index.js","render":"file:./render.php"}');
 
 /***/ })
 
@@ -143,14 +143,14 @@ module.exports = /*#__PURE__*/JSON.parse('{"$scheme":"https://schemas.wp.org/tru
 var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
-/*!*****************************!*\
-  !*** ./src/footer/index.js ***!
-  \*****************************/
+/*!*************************************!*\
+  !*** ./src/eventsandblogs/index.js ***!
+  \*************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/footer/block.json");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/footer/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/eventsandblogs/block.json");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/eventsandblogs/edit.js");
 
 
 
