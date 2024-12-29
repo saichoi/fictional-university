@@ -1,23 +1,12 @@
-import ourColors from "../inc/ourColors"
+import ourColors from "../../inc/ourColors"
 import { link } from "@wordpress/icons"
 import { ToolbarGroup, ToolbarButton, Popover, Button, PanelBody, PanelRow, ColorPalette } from "@wordpress/components"
-import { RichText, InspectorControls, BlockControls, __experimentalLinkControl as LinkControl, getColorObjectByColorValue } from "@wordpress/block-editor"
-import { registerBlockType } from "@wordpress/blocks"
+import { useBlockProps, RichText, InspectorControls, BlockControls, __experimentalLinkControl as LinkControl, getColorObjectByColorValue } from "@wordpress/block-editor"
 import { useState } from "@wordpress/element"
 
-registerBlockType("ourblocktheme/genericbutton", {
-    title: "Generic Button",
-    attributes: {
-        text: { type: "string" },
-        size: { type: "string", default: "large" },
-        linkObject: { type: "object", default: {url: ""} },
-        colorName: {type: "string", default: "blue"}
-    },
-    edit: EditComponent,
-    save: SaveComponent
-});
+export default function Edit(props) {
+    const blockProps = useBlockProps()
 
-function EditComponent(props) {
     const [isLinkPickerVisible, setIsLinPickerkVisible] = useState(false);
 
     function handleTextChange(x) {
@@ -43,7 +32,7 @@ function EditComponent(props) {
     }
 
     return (
-        <>
+        <div {...blockProps}>
             <BlockControls>
                 <ToolbarGroup>
                     <ToolbarButton onClick={buttonHandler} icon={link}/>
@@ -68,10 +57,6 @@ function EditComponent(props) {
                     <Button variant="primary" onClick={() => setIsLinPickerkVisible(false)} style={{display: "block", width: "100%"}}>Confrm Link</Button>
                 </Popover>
             )}
-        </>
+        </div>
     )
-}
-
-function SaveComponent(props) {
-    return <a href={props.attributes.linkObject.url} className={`btn btn--${props.attributes.size} btn--${props.attributes.colorName}`}>{props.attributes.text}</a>
 }

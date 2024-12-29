@@ -190,6 +190,8 @@ function our_new_blocks() {
     // Editor에서 배너의 디폴트 이미지 가져오는 방법
     wp_localize_script('wp-editor','ourThemeData', array('themePath' => get_stylesheet_directory_uri()));
 
+    register_block_type_from_metadata(__DIR__ . '/build/genericbutton');
+    register_block_type_from_metadata(__DIR__ . '/build/genericheading');
     register_block_type_from_metadata(__DIR__ . '/build/slideshow');
     register_block_type_from_metadata(__DIR__ . '/build/slide');
     register_block_type_from_metadata(__DIR__ . '/build/banner');
@@ -248,9 +250,6 @@ class JSXBlock {
         register_block_type("ourblocktheme/{$this->name}", $ourArgs);
     }
 }
-
-new JSXBlock('genericheading');
-new JSXBlock('genericbutton');
 
 function myallowedblocks($allowed_block_types, $editor_context) {
     if ($editor_context->post->post_type == "professor") {
