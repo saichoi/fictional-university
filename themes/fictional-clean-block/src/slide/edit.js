@@ -1,28 +1,17 @@
 import apiFetch from "@wordpress/api-fetch"
 import { Button, PanelBody, PanelRow } from "@wordpress/components"
-import { InnerBlocks, InspectorControls, MediaUpload, MediaUploadCheck } from "@wordpress/block-editor"
-import { registerBlockType } from "@wordpress/blocks"
+import { useBlockProps, InnerBlocks, InspectorControls, MediaUpload, MediaUploadCheck } from "@wordpress/block-editor"
 import { useEffect } from "@wordpress/element"
 
-registerBlockType("ourblocktheme/slide", {
-    title: "Slide",
-    supports: {
-        align: ["full"],
-    },
-    attributes: {
-        themeimage: {type: "string"},
-        align: {type: "string", default: "full"},
-        imgID: {type: "number"},
-        imgURL: {type: "string", default: window.banner.fallbackimage}
-    },
-    edit: EditComponent,
-    save: SaveComponent
-});
+export default function Edit(props) {
+    const blockProps = useBlockProps()
 
-function EditComponent(props) {
     useEffect(() => {
         if (props.attributes.themeimage) {
-            props.setAttributes({imgURL: `${slide.themeimagepath}${props.attributes.themeimage}`})
+            props.setAttributes({imgURL: `${ourThemeData.themePath}/images/${props.attributes.themeimage}`})
+        }
+        if (!props.attributes.themeimage && !props.attributes.imgURL) {
+            props.setAttributes({imgURL: `${ourThemeData.themePath}/images/library-hero.jpg`})
         }
     }, []);
     useEffect(() => {
@@ -37,7 +26,7 @@ function EditComponent(props) {
             go()
         }
     }, [props.attributes.imgID])
-  
+    
     function onFileSelect(x) {
         props.setAttributes({imgID: x.id});
     }
@@ -56,17 +45,15 @@ function EditComponent(props) {
                 </PanelBody>
             </InspectorControls>
             
-            <div className="hero-slider__slide" style={{ backgroundImage: `url('${props.attributes.imgURL}')` }}>
-                <div className="hero-slider__interior container">
-                <div className="hero-slider__overlay t-center">
-                    <InnerBlocks allowedBlocks={["ourblocktheme/genericheading", "ourblocktheme/genericbutton"]} />
-                </div>
+            <div {...blockProps}>
+                <div className="hero-slider__slide" style={{ backgroundImage: `url('${props.attributes.imgURL}')` }}>
+                    <div className="hero-slider__interior container">
+                    <div className="hero-slider__overlay t-center">
+                        <InnerBlocks allowedBlocks={["ourblocktheme/genericheading", "ourblocktheme/genericbutton"]} />
+                    </div>
+                    </div>
                 </div>
             </div>
         </>
     )
-}
-
-function SaveComponent() {
-    return <InnerBlocks.Content />
 }
