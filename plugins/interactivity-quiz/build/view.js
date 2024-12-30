@@ -76,7 +76,9 @@ const {
       if (!context.solved) {
         if (context.index === context.correctAnswer) {
           context.showCongrats = true;
-          context.solved = true;
+          setTimeout(() => {
+            context.solved = true;
+          }, 1000);
         } else {
           context.showSorry = true;
           setTimeout(() => {
@@ -98,6 +100,14 @@ const {
     }
   },
   callbacks: {
+    noclickClass: () => {
+      const context = (0,_wordpress_interactivity__WEBPACK_IMPORTED_MODULE_0__.getContext)();
+      return context.solved && context.correct;
+    },
+    fadedclass: () => {
+      const context = (0,_wordpress_interactivity__WEBPACK_IMPORTED_MODULE_0__.getContext)();
+      return context.solved && !context.correct;
+    },
     logIsOpen: () => {
       const {
         isOpen

@@ -15,7 +15,10 @@ const { state } = store( 'create-block', {
 			if(!context.solved) {
 				if (context.index === context.correctAnswer) {
 					context.showCongrats = true;
-					context.solved = true;
+					setTimeout(()=>{
+						context.solved = true;
+					}, 1000);
+					
 				} else {
 					context.showSorry = true;
 					setTimeout(()=>{
@@ -37,6 +40,14 @@ const { state } = store( 'create-block', {
 		},
 	},
 	callbacks: {
+		noclickClass: () => {
+			const context =getContext();
+			return context.solved && context.correct;
+		},
+		fadedclass: () => {
+			const context =getContext();
+			return context.solved && !context.correct;
+		},
 		logIsOpen: () => {
 			const { isOpen } = getContext();
 			// Log the value of `isOpen` each time it changes.
